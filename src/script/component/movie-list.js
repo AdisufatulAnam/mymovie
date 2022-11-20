@@ -3,7 +3,9 @@ import "./movie-item.js";
 class MovieList extends HTMLElement {
   constructor() {
     super();
-    this.shadowDOM = this.attachShadow({ mode: "open" });
+    this.shadowDOM = this.attachShadow({
+      mode: "open"
+    });
   }
 
   set movie(movies) {

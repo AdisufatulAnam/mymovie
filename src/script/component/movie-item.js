@@ -5,12 +5,20 @@ class MovieItem extends HTMLElement {
       mode: "open"
     });
   }
-
   set movie(movie) {
     this._movie = movie;
     this.render();
   }
-
+  render() {
+    this.innerHTML = `
+      <div id="${this._movie.id}" class="card overflow-hidden rounded-4 text-center text-white bg-dark h-100" type="button" data-toggle="modal" data-target="#exampleModalCenter">
+      <img class="p-2 card-img rounded-4 card-img-top" src="${this._movie.poster_path !== null || undefined || "" ? "https://image.tmdb.org/t/p/w500"+this._movie.poster_path : "https://pbs.twimg.com/media/EXPCIJuUcAEDjo_?format=png&name=medium"}" alt="Poster Movie">
+        <div class="card-img-overlay d-flex flex-column justify-content-end">
+          <p class="grad1 card-title"><strong>${this._movie.original_title}</strong> (${this._movie.release_date ? this._movie.release_date.substring(0,4) : ""})</p>
+        </div>
+      </div>
+    `;
+  }
   render() {
     this.shadowDOM.innerHTML = `
         <style>
@@ -38,13 +46,14 @@ class MovieItem extends HTMLElement {
           }
           
           .movie {
-            padding: 24px;
+            padding: 10px;
+            weight:20px;
           }
           
-          .movie > h2 {
+          .movie > h3 {
             font-weight: lighter;
-            margin-top: 20px;
-            border-radius:2px;
+            margin-top: 10px;
+            border-radius:px;
           }
           
           .movie > p {
@@ -54,6 +63,7 @@ class MovieItem extends HTMLElement {
             display: -webkit-box;
             -webkit-box-orient: vertical;
             -webkit-line-clamp: 10; 
+            
           }
           @media only screen and (max-width: 600px) {
             :host {
@@ -65,11 +75,10 @@ class MovieItem extends HTMLElement {
         <div>
         <img class="poster_path" src="https://image.tmdb.org/t/p/w500/${this._movie.poster_path}" alt="${this._movie.title}">
         <div class="movie">
-          <h2>${this._movie.title}</h2>
-          <p>${this._movie.overview}</p>
+          <h4>${this._movie.title}</h4>
+          <h4>${this._movie.release_date ? this._movie.release_date.substring(0,4) : ""}</h4>
         </div>
       `;
   }
 }
-
 customElements.define("movie-item", MovieItem);
