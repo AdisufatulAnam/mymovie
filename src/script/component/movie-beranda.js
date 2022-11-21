@@ -21,7 +21,7 @@ class movieBeranda extends HTMLElement {
           </div>
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <svg class="bd-placeholder-img" width="100%" height="500px" xmlns="http://www.w3.org/2000/svg"
+              <svg class="bd-placeholder-img" width="100%" height="600px" xmlns="http://www.w3.org/2000/svg"
                 aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
                 <rect width="100%" height="4000px" fill="#777" /></svg>
     
